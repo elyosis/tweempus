@@ -1,0 +1,13 @@
+.section-header {
+  width: 100%;
+  background: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+}
+
+.header_auth {
+  border: none;
+  background-color: white;
+}
