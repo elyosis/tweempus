@@ -10,4 +10,7 @@ import { Twimp } from '../twimp.model';
 export class TwimpCardComponent {
   @Input() twimp!: Twimp;
 
+  updateFavorite() {
+    this.twimp.favorite = !this.twimp.favorite;
+  }
 }
