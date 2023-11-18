@@ -1,0 +1,19 @@
+.profile_section {
+  display: flex;
+  gap: 1rem;
+  justify-content: space-evenly;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.profile_twimps {
+    transition: .35s ease-in-out
+}
+
+@media (max-width: 768px) {
+  .profile_section {
+    flex-direction: column;
+    padding: 0;
+  }
+}
