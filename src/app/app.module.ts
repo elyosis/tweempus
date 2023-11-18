@@ -7,6 +7,7 @@ import { CoreModule } from './core/core.module';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { LoginModule } from './login/login.module';
 import { ProfileModule } from './profile/profile.module';
+import { ErrorModule } from './error/error.module';
 
 @NgModule({
   declarations: [
@@ -14,11 +15,12 @@ import { ProfileModule } from './profile/profile.module';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     CoreModule,
     DashboardModule,
     LoginModule,
-    ProfileModule
+    ProfileModule,
+    ErrorModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
