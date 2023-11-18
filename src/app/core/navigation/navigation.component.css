@@ -27,6 +27,8 @@
 
 .nav_list_link {
   width: 100%;
+  color: #666;
+  text-decoration: none;
   font-weight: bold;
 }
 
