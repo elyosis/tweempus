@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthenticationService } from '../core/authentication.service';
 
 @Component({
   selector: 'tweempus-login',
@@ -7,4 +8,9 @@ import { Component } from '@angular/core';
 })
 export class LoginComponent {
 
+  constructor(private authService: AuthenticationService) {}
+
+  logIn() {
+    this.authService.login("1");
+  }
 }
