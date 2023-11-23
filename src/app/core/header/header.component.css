@@ -10,4 +10,5 @@
 .header_auth {
   border: none;
   background-color: white;
+  cursor: pointer;
 }
