@@ -44,6 +44,29 @@ export class TwimpService {
     )
   }
 
+  getFavoritesByUser(idUser: string): Observable<any> {
+    return this.httpClient.get(`${this.urlFavorite}/${idUser}`).pipe(
+      map((response:any) => response.twimps),
+      catchError(this.handleError)
+    )
+  }
+
+  setFavorite(idUser: string, idTwimp: string, oldFavs: string[]): Observable<Object> {
+    const newFavs = [...oldFavs, idTwimp];
+
+    return this.httpClient.patch(`${this.urlFavorite}/${idUser}`, {"twimps": newFavs}).pipe(
+      catchError(this.handleError)
+    )
+  }
+
+  unsetFavorite(idUser: string, idTwimp: string, oldFavs: string[]): Observable<Object> {
+    const newFavs = oldFavs.filter(id => id != idTwimp);
+
+    return this.httpClient.patch(`${this.urlFavorite}/${idUser}`, {"twimps": newFavs}).pipe(
+      catchError(this.handleError)
+    )
+  }
+
   handleError(error: any) {
     let errMsg = error.message ? error.message :
       error.status ? `${error.status} - ${error.statusText}` : "Server error"

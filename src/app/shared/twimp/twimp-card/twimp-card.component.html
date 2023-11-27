@@ -13,7 +13,7 @@
 	<hr class="twimp_line">
 
 	<div class="twimp_fav">
-		<a class="fav_icon fav_icon-selected" href="#" (click)="updateFavorite()">&#10084;</a>
+		<a class="fav_icon" [class.selected]="this.twimp.favorite" (click)="updateFavorite()">&#10084;</a>
 	</div>
 
 </section>
