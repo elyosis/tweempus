@@ -13,7 +13,7 @@ export class HeaderComponent {
   }
 
   checkLoginStatus() {
-    if (this.authService.token != null) {
+    if (this.authService.checkLogin("1")) {
       return true;
     } else {
       return false;

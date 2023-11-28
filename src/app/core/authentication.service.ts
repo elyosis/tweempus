@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 
-import { Observable, throwError, catchError } from 'rxjs';
+import { Observable, throwError, catchError} from 'rxjs';
 
 import { AuthorService } from '../shared/author/author.service';
 import { Token } from './token.model';
@@ -30,8 +30,9 @@ export class AuthenticationService {
   }
 
   logout(): void {
-    this.deleteSession().subscribe(response => {
+    this.deleteSession().subscribe(() => {
       this.token = null;
+      localStorage.clear()
       this.router.navigate(['/login']);
     });
   }
@@ -53,15 +54,25 @@ export class AuthenticationService {
   saveSession(tokenGenerated: string, idAuthor: string): Observable<Object> {
     const session: Object = { 'id': tokenGenerated, 'author': idAuthor };
 
+    localStorage.setItem("id", tokenGenerated);
+    localStorage.setItem("author", idAuthor);
     return this.httpClient.post(this.url, session).pipe(
       catchError(this.handleError)
     );
   }
 
   deleteSession(): Observable<Object> {
-    return this.httpClient.delete(this.url + '/' + this.token!.key).pipe(
+    return this.httpClient.delete(`${this.url}/${localStorage.getItem("id")}`).pipe(
       catchError(this.handleError)
     );
+  }
+
+  checkLogin(idAuthor: string) {
+    if (localStorage.getItem("id") && localStorage.getItem("author") === idAuthor) {
+      return true
+    } else {
+      return false
+    }
   }
 
   handleError(error: any) {
