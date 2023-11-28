@@ -10,6 +10,9 @@ import { LoginModule } from './login/login.module';
 import { ProfileModule } from './profile/profile.module';
 import { ErrorModule } from './error/error.module';
 
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { LogRequestInterceptor } from './core/log-request.interceptor';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,7 +27,7 @@ import { ErrorModule } from './error/error.module';
     ErrorModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: LogRequestInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
