@@ -1,9 +1,28 @@
 <section class="main fadein fadeInLeft section_login">
-
   <div class="login_box rubberBand animated">
-    <img class="login_image" src="/assets/images/logo-login.png">
-    <div class="login_text">Pulsa el botón de Log-In para entrar en Tweempus con tu cuenta de Google</div>
-    <button class="login_button" (click)="logIn()">Log-in</button>
+    <img class="login_image" src="/assets/images/logo-login.png" />
+    <form class="login_form" [formGroup]="userForm" (ngSubmit)="logIn(userForm)">
+      <label class="login_form_label" for="username"
+        >Introduce tu usuario y pulsa el botón de login</label
+      >
+      <div
+        class="login_form_error"
+        *ngIf="
+          userForm.get('idAuthor')?.hasError('required') &&
+          !userForm.get('idAuthor')?.pristine
+        "
+      >
+        El nombre es obligatorio
+      </div>
+      <div class="login_form_error" *ngIf="userUnregistered">Este usuario no existe</div>
+      <input
+        type="text"
+        name="username"
+        id="username"
+        class="login_form_input-text"
+        formControlName="idAuthor"
+      />
+      <button class="login_button" [disabled]="userForm.invalid">Log-in</button>
+    </form>
   </div>
-
 </section>
