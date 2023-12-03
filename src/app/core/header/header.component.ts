@@ -13,7 +13,7 @@ export class HeaderComponent {
   }
 
   checkLoginStatus() {
-    if (this.authService.checkLogin("1")) {
+    if (localStorage.getItem("id") != null) {
       return true;
     } else {
       return false;

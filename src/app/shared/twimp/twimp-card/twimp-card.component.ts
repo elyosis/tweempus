@@ -10,6 +10,7 @@ import { TwimpService } from '../twimp.service';
 })
 export class TwimpCardComponent {
   @Input() twimp!: Twimp;
+  author: string = localStorage["author"];
 
   constructor(private twimpService: TwimpService) { }
 
@@ -17,12 +18,12 @@ export class TwimpCardComponent {
 
     this.twimp.favorite = !this.twimp.favorite
 
-    this.twimpService.getFavoritesByUser("1").subscribe(userFavs => {
+    this.twimpService.getFavoritesByUser(this.author).subscribe(userFavs => {
 
       if (this.twimp.favorite) {
-        this.twimpService.setFavorite("1", this.twimp.id, userFavs).subscribe()
+        this.twimpService.setFavorite(this.author, this.twimp.id, userFavs).subscribe()
       } else {
-        this.twimpService.unsetFavorite("1", this.twimp.id, userFavs).subscribe()
+        this.twimpService.unsetFavorite(this.author, this.twimp.id, userFavs).subscribe()
       }
     })
   }
