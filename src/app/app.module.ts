@@ -12,6 +12,7 @@ import { ErrorModule } from './error/error.module';
 
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LogRequestInterceptor } from './core/log-request.interceptor';
+import { CreateTwimpModule } from './create-twimp/create-twimp.module';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { LogRequestInterceptor } from './core/log-request.interceptor';
     DashboardModule,
     LoginModule,
     ProfileModule,
+    CreateTwimpModule,
     ErrorModule,
     AppRoutingModule
   ],
